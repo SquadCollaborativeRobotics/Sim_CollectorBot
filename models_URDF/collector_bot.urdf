@@ -6,7 +6,7 @@
 <robot name="collector_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Properties (all values in meters) -->
   <!-- Links -->
-  <link name="base_link" type="continuous">
+  <link name="base_link">
     <collision name="collision">
       <origin xyz="0 0 .1"/>
       <geometry>
@@ -20,6 +20,21 @@
       </geometry>
       <material name="tan">
         <color rgba=".8 0.7 .55 1"/>
+      </material>
+    </visual>
+  </link>
+  <link name="caster">
+    <collision name="collision">
+      <geometry>
+        <sphere radius="0.03175"/>
+      </geometry>
+    </collision>
+    <visual name="visual">
+      <geometry>
+        <sphere radius="0.03175"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba=".3 .3 .3 1"/>
       </material>
     </visual>
   </link>
@@ -54,6 +69,11 @@
     </visual>
   </link>
   <!-- Joints -->
+  <joint name="base_caster" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster"/>
+    <origin xyz="-0.254 0 0.03175"/>
+  </joint>
   <joint name="base_left_wheel" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel_link"/>

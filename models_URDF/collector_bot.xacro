@@ -6,11 +6,12 @@
   <property name="base_width" value="0.4572"/>
   <property name="base_height" value="0.1"/>
   <property name="wheel_radius" value="0.0619125"/>
+  <property name="caster_radius" value="0.03175"/>
 
   <xacro:property name="M_PI" value="3.1415926535897931" />
 
   <!-- Links -->
-  <link name='base_link' type="continuous">
+  <link name='base_link'>
     <collision name='collision'>
       <origin xyz="0 0 .1"/>
       <geometry>
@@ -25,6 +26,23 @@
       </geometry>
       <material name="tan">
         <color rgba=".8 0.7 .55 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name='caster'>
+    <collision name='collision'>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+    </collision>
+
+    <visual name='visual'>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba=".3 .3 .3 1"/>
       </material>
     </visual>
   </link>
@@ -65,6 +83,12 @@
 
 
   <!-- Joints -->
+  <joint name="base_caster" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster"/>
+    <origin xyz="${-base_length/2.0 + 2*INCH_TO_METER} 0 ${caster_radius}"/>
+  </joint>
+
   <joint name="base_left_wheel" type="continuous">
     <parent link="base_link"/>
     <child link="left_wheel_link"/>
