@@ -1,0 +1,1 @@
+Basic URDF model of the collector bot.
