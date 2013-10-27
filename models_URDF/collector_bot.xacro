@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="collector_bot">
+  <!-- Properties (all values in meters) -->
+  <property name="INCH_TO_METER" value="0.0254"/>
+  <property name="base_length" value="0.6096"/>
+  <property name="base_width" value="0.4572"/>
+  <property name="base_height" value="0.1"/>
+  <property name="wheel_radius" value="0.0619125"/>
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+  <!-- Links -->
+  <link name='base_link' type="continuous">
+    <collision name='collision'>
+      <origin xyz="0 0 .1"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+    </collision>
+
+    <visual name='visual'>
+      <origin xyz="0 0 .1"/>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <material name="tan">
+        <color rgba=".8 0.7 .55 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name='left_wheel_link'>
+    <collision>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="0.05"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba=".3 .3 .3 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name='right_wheel_link'>
+    <collision>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="0.05"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="0.05"/>
+      </geometry>
+      <material name="dark_grey">
+        <color rgba=".3 .3 .3 1"/>
+      </material>
+    </visual>
+  </link>
+
+
+  <!-- Joints -->
+  <joint name="base_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+    <origin xyz="${base_length/2.0-2.5*INCH_TO_METER} ${-base_width/2.0-0.025} ${wheel_radius}" rpy="${M_PI/2.0} 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="base_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+    <origin xyz="${base_length/2.0-2.5*INCH_TO_METER} ${base_width/2.0+0.025} ${wheel_radius}" rpy="${M_PI/2.0} 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+</robot>
