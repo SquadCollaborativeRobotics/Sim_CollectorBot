@@ -72,7 +72,282 @@
       <background>0.7 0.7 0.7 1</background>
       <shadows>1</shadows>
     </scene>
-    <model name='Collection_bot'>
+    <state world_name='default'>
+      <sim_time>0 0</sim_time>
+      <real_time>0 157968</real_time>
+      <wall_time>1382918224 552589145</wall_time>
+    </state>
+    <model name='willowgarage'>
+      <static>1</static>
+      <pose>-6 -2 0 0 -0 0</pose>
+      <link name='walls'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://willowgarage/meshes/willowgarage_collision.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://willowgarage/meshes/willowgarage_visual.dae</uri>
+            </mesh>
+          </geometry>
+          <cast_shadows>0</cast_shadows>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <model name='pioneer2dx'>
+      <link name='chassis'>
+        <pose>0 0 0.16 0 -0 0</pose>
+        <inertial>
+          <mass>5</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.445 0.277 0.17</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <collision name='castor_collision'>
+          <pose>-0.2 0 -0.12 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.04</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0</mu>
+                <mu2>0</mu2>
+                <slip1>1</slip1>
+                <slip2>1</slip2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <pose>0 0 0.04 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://pioneer2dx/meshes/chassis.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='castor_visual'>
+          <pose>-0.2 0 -0.12 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.04</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/FlatBlack</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='right_wheel'>
+        <pose>0.1 -0.17 0.11 -2.30512e-12 1.5707 1.5707</pose>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.11</radius>
+              <length>0.05</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100000</mu>
+                <mu2>100000</mu2>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.11</radius>
+              <length>0.05</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/FlatBlack</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='left_wheel'>
+        <pose>0.1 0.17 0.11 -2.30512e-12 1.5707 1.5707</pose>
+        <inertial>
+          <mass>0.5</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.11</radius>
+              <length>0.05</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100000</mu>
+                <mu2>100000</mu2>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.11</radius>
+              <length>0.05</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/FlatBlack</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='left_wheel_hinge' type='revolute'>
+        <pose>0 0 -0.03 0 -0 0</pose>
+        <child>left_wheel</child>
+        <parent>chassis</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <joint name='right_wheel_hinge' type='revolute'>
+        <pose>0 0 0.03 0 -0 0</pose>
+        <child>right_wheel</child>
+        <parent>chassis</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <plugin name='diff_drive' filename='libDiffDrivePlugin.so'>
+        <left_joint>left_wheel_hinge</left_joint>
+        <right_joint>right_wheel_hinge</right_joint>
+        <torque>5</torque>
+      </plugin>
+      <pose>22 11 0 0 -0 0</pose>
+      <static>0</static>
+    </model>
+    <model name='Collection_bot_2'>
       <static>0</static>
       <link name='base_link'>
         <pose>0 0 0.1 0 -0 0</pose>
@@ -266,16 +541,207 @@
           </limit>
         </axis>
       </joint>
-      <pose>1 -1 0 0 -0 0</pose>
+      <pose>22 9 0 0 -0 0</pose>
     </model>
-    <state world_name='default'>
-      <sim_time>0 0</sim_time>
-      <real_time>0 157968</real_time>
-      <wall_time>1382918224 552589145</wall_time>
-    </state>
+    <model name='Collection_bot_3'>
+      <static>0</static>
+      <link name='base_link'>
+        <pose>0 0 0.1 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.6096 0.4572 0.1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.6096 0.4572 0.1</size>
+            </box>
+          </geometry>
+        </visual>
+        <collision name='caster_collision'>
+          <pose>-0.254 0 -0.06905 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.03175</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0</mu>
+                <mu2>0</mu2>
+                <slip1>1</slip1>
+                <slip2>1</slip2>
+              </ode>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='caster_visual'>
+          <pose>-0.254 0 -0.06905 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.03175</radius>
+            </sphere>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='left_wheel_link'>
+        <pose>0.2413 -0.2536 0.0619125 1.5708 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.0619125</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.0619125</radius>
+            </cylinder>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='right_wheel_link'>
+        <pose>0.2413 0.2536 0.0619125 1.5708 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.0619125</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <length>0.05</length>
+              <radius>0.0619125</radius>
+            </cylinder>
+          </geometry>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <inertial>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='base_left_wheel' type='revolute'>
+        <parent>base_link</parent>
+        <child>left_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <joint name='base_right_wheel' type='revolute'>
+        <parent>base_link</parent>
+        <child>right_wheel_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <pose>30 8.43316 0 0 -0 0</pose>
+    </model>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>2.69041 -2.46756 0.466648 0 0.275643 2.35619</pose>
+        <pose>37.6535 -1.77007 12.4471 0 0.947643 2.10419</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
